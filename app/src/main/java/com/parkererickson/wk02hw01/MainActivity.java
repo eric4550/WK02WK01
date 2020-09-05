@@ -15,6 +15,23 @@ public class MainActivity extends AppCompatActivity {
     Button login;
     EditText username, password;
 
+
+    public boolean usernamesMatch(String username){
+        if(username.equals("Admin")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean passwordsMatch(String password){
+        if(password.equals("Admin")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +41,12 @@ public class MainActivity extends AppCompatActivity {
         username = (EditText)findViewById(R.id.etUsername);
         password = (EditText)findViewById(R.id.etPassword);
 
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(username.getText().toString().equals("admin") &&
-                        password.getText().toString().equals("admin")){
+                if(usernamesMatch(username.getText().toString()) &&
+                        passwordsMatch(password.getText().toString())){
                     Intent intent = new Intent(SecondActivity.getIntent(MainActivity.this));
                     startActivity(intent);
                 } else {
